@@ -23,6 +23,7 @@ export const Cart = ({ title, brand, regular_price, image, id }: IProps) => {
       <p>
         <span>{regular_price.currency}</span>
         {regular_price.value}
+        <button className="buttonBuy">Buy</button>
       </p>
     </div>
   );
