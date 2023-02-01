@@ -20,6 +20,15 @@
 }
 
 .buttonBuy {
-  width: 30px;
-  color: red;
+  width: 100px;
+  background-color: rgb(235, 36, 36);
+  color: white;
+  border-radius: 15px;
+  border: none;
+  margin-left: 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(243, 127, 127);
+  }
 }

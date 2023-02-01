@@ -12,8 +12,6 @@ import Brend from '../../ui/brend/brend';
 interface IProps {}
 
 export const Home = () => {
-  // const [product, setProduct] = useState([]);
-
   return (
     <div className="home">
       <div className="brends">

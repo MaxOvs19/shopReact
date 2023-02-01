@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './cart.scss';
 
 interface IProps {
@@ -12,14 +12,15 @@ interface IProps {
   };
   image: string;
   brand: number;
+  BuyProduct?: (item: object) => void;
 }
 
 export const Cart = ({ title, brand, regular_price, image, id }: IProps) => {
   return (
     <div className="cart" id={id.toString()}>
-      <img src={image} alt="#" />
+      <img src={require(`../../assets/img/${image}`)} alt="#" />
       <h4>{title}</h4>
-      <h6>{brand}</h6>
+      <h6>Brend: {brand}</h6>
       <p>
         <span>{regular_price.currency}</span>
         {regular_price.value}
