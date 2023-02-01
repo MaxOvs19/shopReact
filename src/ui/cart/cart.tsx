@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
+import { ICart } from './cart.interface';
 import './cart.scss';
 
-interface IProps {
-  type: string;
-  id: number;
-  sku: string;
-  title: string;
-  regular_price: {
-    currency: string;
-    value: number;
-  };
-  image: string;
-  brand: number;
-  BuyProduct?: (item: object) => void;
-}
+export const Cart = ({ title, brand, regular_price, image, id, BuyProduct }: ICart) => {
+  const Add = () => {
+    let AddedProduct = {
+      title,
+      brand,
+      regular_price,
+      image,
+      id,
+    };
 
-export const Cart = ({ title, brand, regular_price, image, id }: IProps) => {
+    BuyProduct(AddedProduct);
+  };
+
   return (
     <div className="cart" id={id.toString()}>
       <img src={require(`../../assets/img/${image}`)} alt="#" />
@@ -24,8 +23,10 @@ export const Cart = ({ title, brand, regular_price, image, id }: IProps) => {
       <p>
         <span>{regular_price.currency}</span>
         {regular_price.value}
-        <button className="buttonBuy">Buy</button>
       </p>
+      <button className="buttonBuy" onClick={Add}>
+        Buy
+      </button>
     </div>
   );
 };

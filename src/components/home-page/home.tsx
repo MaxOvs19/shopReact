@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import './home.scss';
-import jacket from '../../assets/img/jacket.png';
-import tshirt from '../../assets/img/TShirt.png';
-import tshirt2 from '../../assets/img/TShirt2.png';
-import tshirt3 from '../../assets/img/TShirt3.png';
 import products from './products.json';
 import brends from './brands.json';
 import Cart from '../../ui/cart/cart';
 import Brend from '../../ui/brend/brend';
+import { ICart } from '../../ui/cart/cart.interface';
 
 interface IProps {}
 
 export const Home = () => {
+  const [product, setProduct] = useState<ICart[]>([]);
+
+  const InfoProd = (item: ICart) => {
+    setProduct([...product, item]);
+  };
+
+  console.log(product);
+
   return (
     <div className="home">
       <div className="brends">
@@ -36,6 +41,7 @@ export const Home = () => {
               }}
               image={product.image}
               brand={product.brand}
+              BuyProduct={InfoProd}
             />
           );
         })}

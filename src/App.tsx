@@ -1,21 +1,32 @@
 import React from 'react';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import './App.scss';
 import Basket from './components/basket/basket';
 import Home from './components/home-page/home';
-import Header from './ui/header/header';
+import logo from './assets/img/logo.png';
+import basket from './assets/img/basket.png';
 
 function App() {
   return (
     <div className="App container">
-      <Header />
       <BrowserRouter>
-        {/* <Router>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/basket" element={<Basket />}></Route>
-          </Routes>
-        </Router> */}
+        <header className="header">
+          <div className="header__logo">
+            <Link to="/">
+              <img src={logo} alt="#" />
+            </Link>
+          </div>
+          <div className="header__basket">
+            <Link to="/basket">
+              <img src={basket} alt="#" />
+            </Link>
+          </div>
+        </header>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/basket" element={<Basket />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

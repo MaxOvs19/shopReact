@@ -1,0 +1,38 @@
+.basket {
+  h3 {
+    text-align: initial;
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .table {
+    margin: 50px;
+    font-size: 20px;
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .text {
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+
+    &__body {
+    }
+  }
+
+  .total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    button {
+      width: 250px;
+      height: 50px;
+    }
+  }
+}
