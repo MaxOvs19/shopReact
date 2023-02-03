@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Iaction, defaultState, Ibasket } from '../..';
 import { ICart } from './cart.interface';
 import './cart.scss';
 
-export const Cart = ({ title, brand, regular_price, image, id, BuyProduct }: ICart) => {
+export const Cart = ({ title, brand, regular_price, image, id }: ICart) => {
   const dispath = useDispatch();
-  let a = defaultState.basket;
-  const cash = useSelector((defaultState: Ibasket) => defaultState.basket);
+  // const cash = useSelector((defaultState: Ibasket) => defaultState.basket);
 
   const Add = () => {
     let AddedProduct = {
@@ -18,7 +16,7 @@ export const Cart = ({ title, brand, regular_price, image, id, BuyProduct }: ICa
       id,
     };
 
-    dispath({ type: 'ADD_CASH', payload: AddedProduct });
+    dispath({ type: 'ADD_PRODUCT', payload: AddedProduct });
   };
 
   return (

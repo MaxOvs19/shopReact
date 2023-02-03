@@ -9,5 +9,4 @@ export interface ICart {
   };
   image: string;
   brand: number;
-  BuyProduct: (item: any) => void;
 }

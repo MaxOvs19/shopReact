@@ -9,14 +9,6 @@ import { ICart } from '../../ui/cart/cart.interface';
 interface IProps {}
 
 export const Home = () => {
-  const [product, setProduct] = useState<ICart[]>([]);
-
-  const InfoProd = (item: ICart) => {
-    setProduct([...product, item]);
-  };
-
-  console.log(product);
-
   return (
     <div className="home">
       <div className="brends">
@@ -41,7 +33,6 @@ export const Home = () => {
               }}
               image={product.image}
               brand={product.brand}
-              BuyProduct={InfoProd}
             />
           );
         })}

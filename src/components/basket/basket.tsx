@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { defaultState, Ibasket } from '../..';
+import { Ibasket } from '../../store/buy-reducer/buy-reducer.interface';
 import { ICart } from '../../ui/cart/cart.interface';
 import './basket.scss';
 
-interface IProps {}
-
 export const Basket = ({}) => {
   const dispath = useDispatch();
-  let a = defaultState.basket;
-  const cash = useSelector((defaultState: Ibasket) => defaultState.basket);
+  const [qty, setQty] = useState('');
+
+  const selectedProducts = useSelector((defaultState: Ibasket) => defaultState.basket);
+  let col = 0;
+
+  // const lol = (selectedProduct: ICart) => {
+  //   selectedProducts.filter((item) => {
+  //     console.log(item.id === selectedProduct.id);
+
+  //     col += 1;
+  //   });
+  // };
+  // console.log(col);
+
+  const deleteItem = (item: ICart) => {
+    dispath({ type: 'DELETE_PRODUCT', payload: item.id });
+  };
+
+  let sum = 0;
 
   return (
     <div className="basket">
@@ -25,15 +40,43 @@ export const Basket = ({}) => {
           </div>
         </div>
         <div className="table__body">
-          {cash.map((tovar: ICart) => {
+          {selectedProducts.map((tovar: ICart) => {
+            sum += tovar.regular_price.value * parseInt(qty);
+            // lol(tovar);
+
             return (
               <>
-                <div>{tovar.title}</div>
-                <div>{tovar.brand}</div>
-                <div>{tovar.id}</div>
-                <div>{tovar.image}</div>
-                <div>{tovar.type}</div>
-                <div>{tovar.regular_price.value}</div>
+                <div className="selectedProduct">
+                  <div className="selectedProduct__name">
+                    <img
+                      src={require(`../../assets/img/${tovar.image}`)}
+                      alt="#"
+                      className="selectedProduct__img"
+                    />
+                    <div>
+                      <span>Brend: {tovar.brand}</span> / <span>Item: {tovar.title} </span>
+                    </div>
+                  </div>
+
+                  <div className="selectedProduct__price">
+                    <div>${tovar.regular_price.value}</div>
+                    <input
+                      type="number"
+                      name="input"
+                      id="inputTest"
+                      className="selectedProduct__input"
+                      min={1}
+                      value={qty}
+                      onChange={(event) => setQty(event.target.value)}
+                    />
+                    <div>
+                      <span>${tovar.regular_price.value * parseInt(qty)}</span>
+                      <button className="delite" onClick={() => deleteItem(tovar)}>
+                        X
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </>
             );
           })}
@@ -41,7 +84,7 @@ export const Basket = ({}) => {
       </div>
 
       <div className="total">
-        <p className="amountPayable">SubTotal: 0</p>
+        <p className="amountPayable">SubTotal: {sum} </p>
         <button>Checkout</button>
       </div>
     </div>
