@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Ibasket } from '../../store/buy-reducer/buy-reducer.interface';
 import { ICart } from './cart.interface';
 import './cart.scss';
 
 export const Cart = ({ title, brand, regular_price, image, id }: ICart) => {
   const dispath = useDispatch();
-  // const cash = useSelector((defaultState: Ibasket) => defaultState.basket);
+  // const basket = useSelector((defaultState: Ibasket) => defaultState.basket);
 
   const Add = () => {
     let AddedProduct = {

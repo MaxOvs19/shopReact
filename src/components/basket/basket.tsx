@@ -11,18 +11,15 @@ export const Basket = ({}) => {
   const selectedProducts = useSelector((defaultState: Ibasket) => defaultState.basket);
   let col = 0;
 
-  // const lol = (selectedProduct: ICart) => {
-  //   selectedProducts.filter((item) => {
-  //     console.log(item.id === selectedProduct.id);
-
-  //     col += 1;
-  //   });
-  // };
-  // console.log(col);
-
   const deleteItem = (item: ICart) => {
     dispath({ type: 'DELETE_PRODUCT', payload: item.id });
   };
+
+  let a = 0;
+
+  // selectedProducts.filter((item: ICart) => {
+  //   return console.log(item.id);
+  // });
 
   let sum = 0;
 
@@ -41,9 +38,7 @@ export const Basket = ({}) => {
         </div>
         <div className="table__body">
           {selectedProducts.map((tovar: ICart) => {
-            sum += tovar.regular_price.value * parseInt(qty);
-            // lol(tovar);
-
+            sum += tovar.regular_price.value;
             return (
               <>
                 <div className="selectedProduct">
@@ -60,17 +55,17 @@ export const Basket = ({}) => {
 
                   <div className="selectedProduct__price">
                     <div>${tovar.regular_price.value}</div>
-                    <input
+                    {/* <input
                       type="number"
                       name="input"
                       id="inputTest"
                       className="selectedProduct__input"
                       min={1}
-                      value={qty}
+                      // value={qty}
                       onChange={(event) => setQty(event.target.value)}
-                    />
+                    /> */}
                     <div>
-                      <span>${tovar.regular_price.value * parseInt(qty)}</span>
+                      <span>${tovar.regular_price.value}</span>
                       <button className="delite" onClick={() => deleteItem(tovar)}>
                         X
                       </button>

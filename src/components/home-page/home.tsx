@@ -6,8 +6,6 @@ import Cart from '../../ui/cart/cart';
 import Brend from '../../ui/brend/brend';
 import { ICart } from '../../ui/cart/cart.interface';
 
-interface IProps {}
-
 export const Home = () => {
   return (
     <div className="home">
