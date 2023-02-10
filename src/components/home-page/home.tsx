@@ -31,6 +31,7 @@ export const Home = () => {
               }}
               image={product.image}
               brand={product.brand}
+              count={product.count}
             />
           );
         })}

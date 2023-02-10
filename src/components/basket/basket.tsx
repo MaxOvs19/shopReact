@@ -6,20 +6,20 @@ import './basket.scss';
 
 export const Basket = ({}) => {
   const dispath = useDispatch();
-  const [qty, setQty] = useState('');
 
   const selectedProducts = useSelector((defaultState: Ibasket) => defaultState.basket);
-  let col = 0;
+
+  const addTovar = (item: ICart) => {
+    dispath({ type: 'ADD_COL_PRODUCT', payload: item.id });
+  };
+
+  const removeTovar = (item: ICart) => {
+    dispath({ type: 'REMOVE_COL_PRODUCT', payload: item.id });
+  };
 
   const deleteItem = (item: ICart) => {
     dispath({ type: 'DELETE_PRODUCT', payload: item.id });
   };
-
-  let a = 0;
-
-  // selectedProducts.filter((item: ICart) => {
-  //   return console.log(item.id);
-  // });
 
   let sum = 0;
 
@@ -38,7 +38,10 @@ export const Basket = ({}) => {
         </div>
         <div className="table__body">
           {selectedProducts.map((tovar: ICart) => {
-            sum += tovar.regular_price.value;
+            if (tovar.count <= 0) {
+              dispath({ type: 'DELETE_PRODUCT', payload: tovar.id });
+            }
+            sum += tovar.regular_price.value * tovar.count;
             return (
               <>
                 <div className="selectedProduct">
@@ -55,17 +58,13 @@ export const Basket = ({}) => {
 
                   <div className="selectedProduct__price">
                     <div>${tovar.regular_price.value}</div>
-                    {/* <input
-                      type="number"
-                      name="input"
-                      id="inputTest"
-                      className="selectedProduct__input"
-                      min={1}
-                      // value={qty}
-                      onChange={(event) => setQty(event.target.value)}
-                    /> */}
                     <div>
-                      <span>${tovar.regular_price.value}</span>
+                      <button onClick={() => addTovar(tovar)}>+</button>
+                      <span>{tovar.count}</span>
+                      <button onClick={() => removeTovar(tovar)}>-</button>
+                    </div>
+                    <div>
+                      <span>${tovar.regular_price.value * tovar.count}</span>
                       <button className="delite" onClick={() => deleteItem(tovar)}>
                         X
                       </button>

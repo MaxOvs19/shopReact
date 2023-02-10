@@ -9,4 +9,5 @@ export interface ICart {
   };
   image: string;
   brand: number;
+  count: number;
 }

@@ -4,20 +4,34 @@ import { Ibasket } from '../../store/buy-reducer/buy-reducer.interface';
 import { ICart } from './cart.interface';
 import './cart.scss';
 
-export const Cart = ({ title, brand, regular_price, image, id }: ICart) => {
+export const Cart = ({ title, brand, regular_price, image, id, type, sku, count }: ICart) => {
   const dispath = useDispatch();
-  // const basket = useSelector((defaultState: Ibasket) => defaultState.basket);
+  const basket = useSelector((defaultState: Ibasket) => defaultState.basket);
 
-  const Add = () => {
-    let AddedProduct = {
+  const Add = (id: number) => {
+    let flag = false;
+    basket.forEach((item) => {
+      if (item.id === id) {
+        flag = true;
+      }
+    });
+
+    let addedProduct = {
+      type,
+      sku,
       title,
       brand,
       regular_price,
       image,
       id,
+      count: 1,
     };
 
-    dispath({ type: 'ADD_PRODUCT', payload: AddedProduct });
+    if (flag === false) {
+      dispath({ type: 'ADD_PRODUCT', payload: addedProduct });
+    } else {
+      return;
+    }
   };
 
   return (
@@ -29,7 +43,7 @@ export const Cart = ({ title, brand, regular_price, image, id }: ICart) => {
         <span>{regular_price.currency}</span>
         {regular_price.value}
       </p>
-      <button className="buttonBuy" onClick={Add}>
+      <button className="buttonBuy" onClick={() => Add(id)}>
         Buy
       </button>
     </div>
