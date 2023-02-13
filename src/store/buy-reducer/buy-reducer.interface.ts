@@ -1,6 +1,6 @@
 import { ICart } from '../../ui/cart/cart.interface';
 
-export interface Ibasket {
+export interface IBasket {
   basket: ICart[];
 }
 

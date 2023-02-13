@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { State } from '../../store/buy-reducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { Ibasket } from '../../store/buy-reducer/buy-reducer.interface';
+import { IBasket } from '../../store/buy-reducer/buy-reducer.interface';
 import { ICart } from './cart.interface';
 import './cart.scss';
 
 export const Cart = ({ title, brand, regular_price, image, id, type, sku, count }: ICart) => {
+  const basket = useSelector((defaultState: State) => defaultState.buy.basket);
   const dispath = useDispatch();
-  const basket = useSelector((defaultState: Ibasket) => defaultState.basket);
 
   const Add = (id: number) => {
     let flag = false;
@@ -35,12 +36,12 @@ export const Cart = ({ title, brand, regular_price, image, id, type, sku, count 
   };
 
   return (
-    <div className="cart" id={id.toString()}>
+    <div className="cart" id={id.toString()} key={id}>
       <img src={require(`../../assets/img/${image}`)} alt="#" />
       <h4>{title}</h4>
       <h6>Brend: {brand}</h6>
       <p>
-        <span>{regular_price.currency}</span>
+        <span>{regular_price.currency} </span>
         {regular_price.value}
       </p>
       <button className="buttonBuy" onClick={() => Add(id)}>

@@ -5,8 +5,15 @@ import brends from './brands.json';
 import Cart from '../../ui/cart/cart';
 import Brend from '../../ui/brend/brend';
 import { ICart } from '../../ui/cart/cart.interface';
+import { useDispatch } from 'react-redux';
 
 export const Home = () => {
+  const dispath = useDispatch();
+
+  products.map((item: ICart) => {
+    dispath({ type: 'LOADING_PRODUCT', payload: item });
+  });
+
   return (
     <div className="home">
       <div className="brends">

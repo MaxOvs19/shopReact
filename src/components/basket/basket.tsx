@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Ibasket } from '../../store/buy-reducer/buy-reducer.interface';
+import { State } from '../../store/buy-reducer';
+import { IBasket } from '../../store/buy-reducer/buy-reducer.interface';
 import { ICart } from '../../ui/cart/cart.interface';
 import './basket.scss';
 
 export const Basket = ({}) => {
   const dispath = useDispatch();
 
-  const selectedProducts = useSelector((defaultState: Ibasket) => defaultState.basket);
+  const selectedProducts = useSelector((state: State) => state.buy.basket);
 
   const addTovar = (item: ICart) => {
     dispath({ type: 'ADD_COL_PRODUCT', payload: item.id });
@@ -78,7 +79,7 @@ export const Basket = ({}) => {
       </div>
 
       <div className="total">
-        <p className="amountPayable">SubTotal: {sum} </p>
+        <p className="amountPayable">SubTotal: {sum.toFixed(2)} </p>
         <button>Checkout</button>
       </div>
     </div>
