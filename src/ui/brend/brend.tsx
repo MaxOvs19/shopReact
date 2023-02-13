@@ -3,7 +3,7 @@ import './brend';
 import products from './products.json';
 import brends from './brands.json';
 import { State } from '../../store/buy-reducer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface IProps {
   id: number;
@@ -13,12 +13,13 @@ interface IProps {
 }
 
 export const Brend = ({ id, code, sort, title }: IProps) => {
-  const products = useSelector((state: State) => state.product.allProduct);
-
-  const sortProduct = () => {};
+  const dispath = useDispatch();
+  const sortProduct = (code: number) => {
+    dispath({ type: 'SORT_PRODUCT', payload: code });
+  };
 
   return (
-    <li id={id.toString()} onClick={() => sortProduct()}>
+    <li id={id.toString()} onClick={() => sortProduct(id)}>
       {title}
     </li>
   );

@@ -1,8 +1,9 @@
 import { IAction } from './buy-reducer.interface';
 import { ICart } from '../../ui/cart/cart.interface';
+import products from '../../components/home-page/products.json';
 
 const SORT_PRODUCT = 'SORT_PRODUCT';
-const LOADING_PRODUCT = 'LOADING_PRODUCT';
+const LOAD_PRODUCT = 'LOAD_PRODUCT';
 
 interface IProduct {
   allProduct: ICart[];
@@ -12,20 +13,21 @@ export const defaultState: IProduct = {
   allProduct: [],
 };
 
+products.forEach((item) => {
+  defaultState.allProduct.push(item);
+});
+
 export const productReducer = (state = defaultState, action: IAction) => {
   switch (action.type) {
-    // case SORT_PRODUCT:
-    //   return {
-    //     ...state,
-    //     allProduct: state.allProduct.sort((a, b) => {
-
-    //     }),
-    //   };
-
-    case LOADING_PRODUCT:
+    case SORT_PRODUCT:
       return {
         ...state,
-        allProduct: [...state.allProduct, action.payload],
+        allProduct: defaultState.allProduct.filter((item) => item.brand === action.payload),
+      };
+    case LOAD_PRODUCT:
+      return {
+        ...state,
+        allProduct: defaultState.allProduct,
       };
     default:
       return state;

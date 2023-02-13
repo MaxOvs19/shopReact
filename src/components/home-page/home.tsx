@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-import './home.scss';
-import products from './products.json';
 import brends from './brands.json';
 import Cart from '../../ui/cart/cart';
 import Brend from '../../ui/brend/brend';
-import { ICart } from '../../ui/cart/cart.interface';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { State } from '../../store/buy-reducer';
+import './home.scss';
 
 export const Home = () => {
   const dispath = useDispatch();
 
-  products.map((item: ICart) => {
-    dispath({ type: 'LOADING_PRODUCT', payload: item });
-  });
+  const allProducts = useSelector((state: State) => state.product.allProduct);
+
+  const removeSort = () => {
+    dispath({
+      type: 'LOAD_PRODUCT',
+    });
+  };
 
   return (
     <div className="home">
       <div className="brends">
-        <h3>Brends</h3>
+        <h3 onClick={removeSort} className="brends__title">
+          All Brends
+        </h3>
         <ul>
           {brends.map((brend) => {
             return <Brend id={brend.id} title={brend.title} sort={brend.sort} code={brend.code} />;
@@ -25,7 +30,7 @@ export const Home = () => {
         </ul>
       </div>
       <div className="goods">
-        {products.map((product) => {
+        {allProducts.map((product) => {
           return (
             <Cart
               type={product.type}

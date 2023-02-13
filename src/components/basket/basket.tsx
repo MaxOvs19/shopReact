@@ -65,7 +65,7 @@ export const Basket = ({}) => {
                       <button onClick={() => removeTovar(tovar)}>-</button>
                     </div>
                     <div>
-                      <span>${tovar.regular_price.value * tovar.count}</span>
+                      <span>${(tovar.regular_price.value * tovar.count).toFixed(2)}</span>
                       <button className="delite" onClick={() => deleteItem(tovar)}>
                         X
                       </button>
