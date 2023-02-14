@@ -44,7 +44,7 @@ export const Cart = ({ title, brand, regular_price, image, id, type, sku, count 
         <span>{regular_price.currency} </span>
         {regular_price.value}
       </p>
-      <button className="buttonBuy" onClick={() => Add(id)}>
+      <button className="btn btn-danger " onClick={() => Add(id)}>
         Buy
       </button>
     </div>
