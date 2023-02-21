@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/MaxOvs19/shopReact/static/css/main.8a2752bd.css",
+    "main.js": "/MaxOvs19/shopReact/static/js/main.bb65c73a.js",
+    "static/media/TShirt.png": "/MaxOvs19/shopReact/static/media/TShirt.51ff71a3081adc5a6bd6.png",
+    "static/media/jacket.png": "/MaxOvs19/shopReact/static/media/jacket.ef10b7afe93bb656ad88.png",
+    "static/media/hoodie.png": "/MaxOvs19/shopReact/static/media/hoodie.ccb92cbd978cd8709e88.png",
+    "static/media/jacket2.png": "/MaxOvs19/shopReact/static/media/jacket2.fed1af0592e17e2d83e4.png",
+    "static/media/sweater.png": "/MaxOvs19/shopReact/static/media/sweater.2d70b43efc86c0c4333a.png",
+    "static/media/TShirt3.png": "/MaxOvs19/shopReact/static/media/TShirt3.d1cda46324aaa61a5a37.png",
+    "static/media/TShirt4.png": "/MaxOvs19/shopReact/static/media/TShirt4.b4eb9ca87753bfe6cf4f.png",
+    "static/media/TShirt2.png": "/MaxOvs19/shopReact/static/media/TShirt2.3c1654a53d29ea875877.png",
+    "static/media/backpack.png": "/MaxOvs19/shopReact/static/media/backpack.bfda11844466f4586971.png",
+    "static/media/basket.png": "/MaxOvs19/shopReact/static/media/basket.77e253b67d45cccc52c1.png",
+    "index.html": "/MaxOvs19/shopReact/index.html",
+    "main.8a2752bd.css.map": "/MaxOvs19/shopReact/static/css/main.8a2752bd.css.map",
+    "main.bb65c73a.js.map": "/MaxOvs19/shopReact/static/js/main.bb65c73a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8a2752bd.css",
+    "static/js/main.bb65c73a.js"
+  ]
+}
