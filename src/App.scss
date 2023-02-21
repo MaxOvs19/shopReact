@@ -8,6 +8,7 @@
 }
 
 .header {
+  position: relative;
   margin-top: 25px;
   height: 100px;
   align-items: center;
@@ -21,5 +22,17 @@
       cursor: pointer;
       width: 30px;
     }
+  }
+  .amount {
+    position: absolute;
+    top: 38px;
+    right: 15px;
+    color: white;
+    font-size: 11px;
+
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: red;
   }
 }

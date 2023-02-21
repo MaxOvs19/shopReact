@@ -60,13 +60,17 @@ export const Basket = ({}) => {
                   <div className="selectedProduct__price">
                     <div>${tovar.regular_price.value}</div>
                     <div>
-                      <button onClick={() => addTovar(tovar)}>+</button>
-                      <span>{tovar.count}</span>
-                      <button onClick={() => removeTovar(tovar)}>-</button>
+                      <button onClick={() => addTovar(tovar)} className="btn btn-primary plus">
+                        +
+                      </button>
+                      <span className="count">{tovar.count}</span>
+                      <button onClick={() => removeTovar(tovar)} className="btn btn-primary plus">
+                        -
+                      </button>
                     </div>
                     <div>
                       <span>${(tovar.regular_price.value * tovar.count).toFixed(2)}</span>
-                      <button className="delite" onClick={() => deleteItem(tovar)}>
+                      <button className="delite btn btn-danger" onClick={() => deleteItem(tovar)}>
                         X
                       </button>
                     </div>
@@ -80,7 +84,7 @@ export const Basket = ({}) => {
 
       <div className="total">
         <p className="amountPayable">SubTotal: {sum.toFixed(2)} </p>
-        <button>Checkout</button>
+        <button className="btn btn-success">Checkout</button>
       </div>
     </div>
   );

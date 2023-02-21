@@ -15,9 +15,9 @@
       justify-content: space-between;
 
       .text {
-        width: 43%;
+        width: 48%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
       }
     }
 
@@ -26,6 +26,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 1px solid black;
+        margin-bottom: 10px;
 
         &__img {
           width: 100px;
@@ -44,6 +46,10 @@
           display: flex;
           width: 43%;
           justify-content: space-between;
+
+          .count {
+            margin: 5px;
+          }
         }
 
         &__input {
@@ -53,6 +59,8 @@
       }
       .delite {
         margin-left: 20px;
+        width: 35px;
+        height: 35px;
       }
     }
   }
@@ -67,4 +75,9 @@
       height: 50px;
     }
   }
+}
+
+.plus {
+  width: 35px;
+  height: 35px;
 }

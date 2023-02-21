@@ -5,12 +5,16 @@ import Basket from './components/basket/basket';
 import Home from './components/home-page/home';
 import logo from './assets/img/logo.png';
 import basket from './assets/img/basket.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { State } from './store/buy-reducer';
 
 function App() {
+  const basketAll = useSelector((defaultState: State) => defaultState.buy.basket);
+
   return (
     <div className="App container">
       <BrowserRouter>
-        <header className="header">
+        <div className="header">
           <div className="header__logo">
             <Link to="/">
               <img src={logo} alt="#" />
@@ -20,8 +24,9 @@ function App() {
             <Link to="/basket">
               <img src={basket} alt="#" />
             </Link>
+            <div className="amount">{basketAll.length}</div>
           </div>
-        </header>
+        </div>
 
         <Routes>
           <Route path="/" element={<Home />} />

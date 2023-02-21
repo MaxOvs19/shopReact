@@ -20,9 +20,9 @@ export const Home = () => {
   return (
     <div className="home">
       <div className="brends">
-        <h3 onClick={removeSort} className="brends__title">
+        <h5 onClick={removeSort} className="brends__title">
           All Brends
-        </h3>
+        </h5>
         <ul>
           {brends.map((brend) => {
             return <Brend id={brend.id} title={brend.title} sort={brend.sort} code={brend.code} />;
